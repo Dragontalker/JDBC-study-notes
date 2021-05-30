@@ -37,6 +37,16 @@ public class ConnectionTest {
         //1. 获取Driver实现对象, 使用反射
         Class clazz = Class.forName("com.mysql.jdbc.Driver");
         Driver driver = (Driver) clazz.newInstance();
+
+        //2. 提供要连接的数据库
+        String url = "jdbc:mysql://localhost:3306/test";
+
+        //3. 提供连接需要的用户名和密码
+        Properties info = new Properties();
+        info.setProperty("user", "root");
+        info.setProperty("password", "password");
+
+
     }
 
 }
