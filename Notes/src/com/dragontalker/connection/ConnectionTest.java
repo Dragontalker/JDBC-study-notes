@@ -31,7 +31,9 @@ public class ConnectionTest {
         System.out.println(conn);
     }
 
-    //方式二: 对方式一进行迭代
+    //方式二: 对方式一进行迭代:
+    // - 在如下的程序中不出现第三方的api
+    // - 使程序有更好的可移植性
     @Test
     public void test2() throws Exception {
         //1. 获取Driver实现对象, 使用反射
@@ -50,5 +52,7 @@ public class ConnectionTest {
         Connection conn = driver.connect(url, info);
         System.out.println(conn);
     }
+
+
 
 }
