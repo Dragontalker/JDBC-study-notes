@@ -9,9 +9,10 @@ import java.util.Properties;
 
 public class ConnectionTest {
 
+    //方式一:
     @Test
     public void test1() throws SQLException {
-
+        //获取厂商的driver
         Driver driver = new com.mysql.jdbc.Driver();
 
         //Tomcat: url:http://localhost:8080/gmall/keyboard.jpg
@@ -28,6 +29,14 @@ public class ConnectionTest {
         Connection conn = driver.connect(url, info);
 
         System.out.println(conn);
+    }
+
+    //方式二: 对方式一进行迭代
+    @Test
+    public void test2() throws Exception {
+        //1. 获取Driver实现对象, 使用反射
+        Class clazz = Class.forName("com.mysql.jdbc.Driver");
+        Driver driver = (Driver) clazz.newInstance();
     }
 
 }
