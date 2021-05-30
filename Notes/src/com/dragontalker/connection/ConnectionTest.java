@@ -38,7 +38,7 @@ public class ConnectionTest {
     public void test2() throws Exception {
         //1. 获取Driver实现对象, 使用反射
         Class clazz = Class.forName("com.mysql.jdbc.Driver");
-        Driver driver = (Driver) clazz.newInstance();
+        Driver driver = (Driver) clazz.getDeclaredConstructor().newInstance();
 
         //2. 提供要连接的数据库
         String url = "jdbc:mysql://localhost:3306/myemployees";
@@ -53,6 +53,10 @@ public class ConnectionTest {
         System.out.println(conn);
     }
 
+    //方式三: 使用DriverManager替换Driver
+    @Test
+    public void testConnection() {
 
+    }
 
 }
