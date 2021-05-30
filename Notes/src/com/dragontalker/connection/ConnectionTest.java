@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -41,7 +42,7 @@ public class ConnectionTest {
         Driver driver = (Driver) clazz.getDeclaredConstructor().newInstance();
 
         //2. 提供要连接的数据库
-        String url = "jdbc:mysql://localhost:3306/myemployees";
+        String url = "jdbc:mysql://localhost:3306/test?characterEncoding=latin1";
 
         //3. 提供连接需要的用户名和密码
         Properties info = new Properties();
@@ -61,8 +62,15 @@ public class ConnectionTest {
         Driver driver = (Driver) clazz.newInstance();
 
         //2. 提供另外三个连接的基本信息
+        String url = "jdbc:mysql://localhost:3306/test?characterEncoding=latin1";
+        String user = "root";
+        String password = "sql23248265YT";
 
+        //3. 注册驱动
+        DriverManager.registerDriver(driver);
 
+        //4. 获取连接
+        DriverManager.getConnection(url, user, password);
     }
 
 }
