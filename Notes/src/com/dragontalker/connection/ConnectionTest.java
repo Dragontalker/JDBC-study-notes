@@ -14,7 +14,8 @@ public class ConnectionTest {
 
         Driver driver = new com.mysql.jdbc.Driver();
 
-        String url = null;
+        //Tomcat: url:http://localhost:8080/gmall/keyboard.jpg
+        String url = "jdbc:sql://localhost:3306/test";
         Properties info = null;
 
         //Connection conn = driver.connection(url, info);
