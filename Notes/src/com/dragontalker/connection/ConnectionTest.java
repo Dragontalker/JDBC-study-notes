@@ -38,7 +38,7 @@ public class ConnectionTest {
     @Test
     public void test2() throws Exception {
         //1. 获取Driver实现对象, 使用反射
-        Class clazz = Class.forName("com.mysql.jdbc.Driver");
+        Class<?> clazz = Class.forName("com.mysql.jdbc.Driver");
         Driver driver = (Driver) clazz.getDeclaredConstructor().newInstance();
 
         //2. 提供要连接的数据库
@@ -58,7 +58,7 @@ public class ConnectionTest {
     @Test
     public void testConnection() throws Exception {
         //1. 获取Driver实现类的对象
-        Class clazz = Class.forName("com.mysql.jdbc.Driver");
+        Class<?> clazz = Class.forName("com.mysql.jdbc.Driver");
         Driver driver = (Driver) clazz.newInstance();
 
         //2. 提供另外三个连接的基本信息
