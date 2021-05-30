@@ -20,11 +20,14 @@ public class ConnectionTest {
         //3306: 默认mysql的端口号
         //test: test数据
         String url = "jdbc:sql://localhost:3306/test";
-        Properties info = null;
+        //将用户名和密码封装在Properties中
+        Properties info = new Properties();
+        info.setProperty("user", "root");
+        info.setProperty("password", "password");
 
-        //Connection conn = driver.connection(url, info);
+        Connection conn = driver.connect(url, info);
 
-        //System.out.println(conn);
+        System.out.println(conn);
     }
 
 }
