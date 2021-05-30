@@ -15,6 +15,10 @@ public class ConnectionTest {
         Driver driver = new com.mysql.jdbc.Driver();
 
         //Tomcat: url:http://localhost:8080/gmall/keyboard.jpg
+        //jdbc:sql: 协议
+        //localhost: ip地址
+        //3306: 默认mysql的端口号
+        //test: test数据
         String url = "jdbc:sql://localhost:3306/test";
         Properties info = null;
 
