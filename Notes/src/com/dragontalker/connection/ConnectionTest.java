@@ -39,14 +39,16 @@ public class ConnectionTest {
         Driver driver = (Driver) clazz.newInstance();
 
         //2. 提供要连接的数据库
-        String url = "jdbc:mysql://localhost:3306/test";
+        String url = "jdbc:mysql://localhost:3306/myemployees";
 
         //3. 提供连接需要的用户名和密码
         Properties info = new Properties();
         info.setProperty("user", "root");
-        info.setProperty("password", "password");
+        info.setProperty("password", "abc123");
 
-
+        //4. 获取连接
+        Connection conn = driver.connect(url, info);
+        System.out.println(conn);
     }
 
 }
