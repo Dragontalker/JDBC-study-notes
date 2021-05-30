@@ -55,7 +55,13 @@ public class ConnectionTest {
 
     //方式三: 使用DriverManager替换Driver
     @Test
-    public void testConnection() {
+    public void testConnection() throws Exception {
+        //1. 获取Driver实现类的对象
+        Class clazz = Class.forName("com.mysql.jdbc.Driver");
+        Driver driver = (Driver) clazz.newInstance();
+
+        //2. 提供另外三个连接的基本信息
+
 
     }
 
