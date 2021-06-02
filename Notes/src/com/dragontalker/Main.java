@@ -1,8 +1,10 @@
 package com.dragontalker;
 
+import java.lang.reflect.Array;
+
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("JDBC");
+    static public void main(String[] args) {
+        System.out.println("JDBC Study Notes");
     }
 }
