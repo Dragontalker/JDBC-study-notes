@@ -60,7 +60,7 @@ public class ConnectionTest {
         //1. 提供另外三个连接的基本信息
         String url = "jdbc:mysql://localhost:3306/test?characterEncoding=latin1";
         String user = "root";
-        String password = "sql23248265YT";
+        String password = "root";
 
         //2. 获取Driver实现类的对象
         Class.forName("com.mysql.jdbc.Driver");
