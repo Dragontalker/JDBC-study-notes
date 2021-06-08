@@ -79,6 +79,11 @@ public class ConnectionTest {
     }
 
     //方式五: 将数据库连接需要的4个基本信息声明在配置文件中, 通过读取配置文件的方式, 获取连接
+    /*
+    此种方法的好处?
+    1. 实现了数据与代码的分离, 实现了解耦
+    2. 减少了配置信息的暴露
+    */
     @Test
     public void getConnection5() throws Exception {
         //1. 读取配置文件中的4个基本信息
