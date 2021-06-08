@@ -63,10 +63,10 @@ public class ConnectionTest {
         String password = "sql23248265YT";
 
         //2. 获取Driver实现类的对象
-        Class<?> clazz = Class.forName("com.mysql.jdbc.Driver");
-        Driver driver = (Driver) clazz.newInstance();
-        //注册驱动
-        DriverManager.registerDriver(driver);
+        Class.forName("com.mysql.jdbc.Driver");
+//        Driver driver = (Driver) clazz.newInstance();
+//        //注册驱动
+//        DriverManager.registerDriver(driver);
 
         //3. 获取连接
         DriverManager.getConnection(url, user, password);
