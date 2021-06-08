@@ -80,7 +80,7 @@ public class ConnectionTest {
 
     //方式五: 将数据库连接需要的4个基本信息声明在配置文件中, 通过读取配置文件的方式, 获取连接
     @Test
-    public void getConnection5() throws IOException {
+    public void getConnection5() throws Exception {
         //1. 读取配置文件中的4个基本信息
         InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream("jdbc.properties");
 
@@ -91,5 +91,8 @@ public class ConnectionTest {
         String user = props.getProperty("user");
         String password = props.getProperty("password");
         String driverClass = props.getProperty("driverClass");
+
+        //2. 加载驱动
+        Class.forName(driverClass);
     }
 }
