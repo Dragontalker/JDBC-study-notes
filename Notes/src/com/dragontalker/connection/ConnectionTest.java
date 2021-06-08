@@ -54,7 +54,7 @@ public class ConnectionTest {
         System.out.println(conn);
     }
 
-    //方式三: 使用DriverManager替换Driver
+    //方式四: 可以只是加载驱动, 不用显示的注册驱动过了
     @Test
     public void testConnection() throws Exception {
         //1. 提供另外三个连接的基本信息
@@ -64,9 +64,13 @@ public class ConnectionTest {
 
         //2. 获取Driver实现类的对象
         Class.forName("com.mysql.jdbc.Driver");
+        //相较于方式3, 可以省略如下的操作:
 //        Driver driver = (Driver) clazz.newInstance();
 //        //注册驱动
 //        DriverManager.registerDriver(driver);
+
+        //为什么可以胜率上述操作呢?
+        //在mysql的Driver实现类中, 声明了static代码块在生成式注册
 
         //3. 获取连接
         DriverManager.getConnection(url, user, password);
