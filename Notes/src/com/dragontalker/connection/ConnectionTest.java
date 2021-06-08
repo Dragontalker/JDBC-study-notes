@@ -75,4 +75,10 @@ public class ConnectionTest {
         //3. 获取连接
         DriverManager.getConnection(url, user, password);
     }
+
+    //方式五:
+    @Test
+    public void getConnection5() {
+
+    }
 }
