@@ -83,6 +83,7 @@ public class ConnectionTest {
     此种方法的好处?
     1. 实现了数据与代码的分离, 实现了解耦
     2. 减少了配置信息的暴露
+    3. 提高了可重用性和可移植性
     */
     @Test
     public void getConnection5() throws Exception {
