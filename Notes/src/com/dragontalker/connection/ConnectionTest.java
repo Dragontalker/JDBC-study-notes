@@ -57,20 +57,18 @@ public class ConnectionTest {
     //方式三: 使用DriverManager替换Driver
     @Test
     public void testConnection() throws Exception {
-        //1. 获取Driver实现类的对象
-        Class<?> clazz = Class.forName("com.mysql.jdbc.Driver");
-        Driver driver = (Driver) clazz.newInstance();
-
-        //2. 提供另外三个连接的基本信息
+        //1. 提供另外三个连接的基本信息
         String url = "jdbc:mysql://localhost:3306/test?characterEncoding=latin1";
         String user = "root";
         String password = "sql23248265YT";
 
-        //3. 注册驱动
+        //2. 获取Driver实现类的对象
+        Class<?> clazz = Class.forName("com.mysql.jdbc.Driver");
+        Driver driver = (Driver) clazz.newInstance();
+        //注册驱动
         DriverManager.registerDriver(driver);
 
-        //4. 获取连接
+        //3. 获取连接
         DriverManager.getConnection(url, user, password);
     }
-
 }
