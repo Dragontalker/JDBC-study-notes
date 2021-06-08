@@ -2,6 +2,8 @@ package com.dragontalker.connection;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -76,9 +78,18 @@ public class ConnectionTest {
         DriverManager.getConnection(url, user, password);
     }
 
-    //方式五:
+    //方式五: 将数据库连接需要的4个基本信息声明在配置文件中, 通过读取配置文件的方式, 获取连接
     @Test
-    public void getConnection5() {
+    public void getConnection5() throws IOException {
+        //1. 读取配置文件中的4个基本信息
+        InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream("jdbc.properties");
 
+        Properties props = new Properties();
+        props.load(is);
+
+        String url = props.getProperty("url");
+        String user = props.getProperty("user");
+        String password = props.getProperty("password");
+        String driverClass = props.getProperty("driverClass");
     }
 }
