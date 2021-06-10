@@ -3,6 +3,6 @@ package com.dragontalker;
 public class Main {
 
     static public void main(String[] args) {
-        System.out.println("JDBC");
+        System.out.println("JDBC Notes");
     }
 }
