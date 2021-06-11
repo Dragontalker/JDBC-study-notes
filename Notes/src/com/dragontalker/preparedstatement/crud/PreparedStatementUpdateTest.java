@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.Properties;
 
 /**
@@ -37,5 +38,9 @@ public class PreparedStatementUpdateTest {
         //3. 获取连接
         Connection connection = DriverManager.getConnection(url, user, password);
         System.out.println(connection);
+
+        //4.
+        String sql = "insert into customers(name, email, birth) values(?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
     }
 }
