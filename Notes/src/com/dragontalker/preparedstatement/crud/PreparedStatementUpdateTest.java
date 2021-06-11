@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.Properties;
 
 /**
@@ -39,8 +41,16 @@ public class PreparedStatementUpdateTest {
         Connection connection = DriverManager.getConnection(url, user, password);
         System.out.println(connection);
 
-        //4.
+        //4. 预编译sql语句, 返回PrepareStatement的实例
         String sql = "insert into customers(name, email, birth) values(?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        PreparedStatement ps = connection.prepareStatement(sql);
+
+        //5. 填充占位符
+        ps.setString(1, "NeZha");
+        ps.setString(2, "nazha@gmail.com");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = sdf.parse("1000-01-01");
+        ps.setDate(3, new Date(date.getTime()));
     }
 }
