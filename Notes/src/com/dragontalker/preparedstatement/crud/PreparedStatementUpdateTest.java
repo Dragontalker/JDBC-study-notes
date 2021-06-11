@@ -52,5 +52,10 @@ public class PreparedStatementUpdateTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = sdf.parse("1000-01-01");
         ps.setDate(3, new Date(date.getTime()));
+
+        //6. 执行sql操作
+        ps.execute();
+
+
     }
 }
