@@ -56,6 +56,8 @@ public class PreparedStatementUpdateTest {
         //6. 执行sql操作
         ps.execute();
 
-
+        //7. 资源的关闭
+        ps.close();
+        connection.close();
     }
 }
