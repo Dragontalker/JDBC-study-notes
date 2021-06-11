@@ -1,5 +1,7 @@
 package com.dragontalker.preparedstatement.crud;
 
+import org.junit.Test;
+
 /**
  * 使用PreparedStatement来替换Statement, 实现对数据表的增删改查操作
  *
@@ -8,4 +10,10 @@ package com.dragontalker.preparedstatement.crud;
  */
 
 public class PreparedStatementUpdateTest {
+
+    //向customers表中添加一条记录
+    @Test
+    public void testInsert() throws Exception{
+
+    }
 }
