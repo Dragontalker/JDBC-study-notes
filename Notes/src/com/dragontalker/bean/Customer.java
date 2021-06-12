@@ -55,4 +55,14 @@ public class Customer {
     public void setBirth(Date birth) {
         this.birth = birth;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birth=" + birth +
+                '}';
+    }
 }
