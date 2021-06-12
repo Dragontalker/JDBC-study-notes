@@ -39,5 +39,6 @@ public class CustomerForQuery {
         }
 
         //关闭资源
+
     }
 }

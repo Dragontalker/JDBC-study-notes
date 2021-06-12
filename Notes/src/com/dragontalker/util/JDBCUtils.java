@@ -56,6 +56,12 @@ public class JDBCUtils {
         }
     }
 
+    /**
+     * 关闭资源的操作
+     * @param conn
+     * @param ps
+     * @param rs
+     */
     public static void closeResource(Connection conn, Statement ps, ResultSet rs) {
         if (ps != null) {
             try {
