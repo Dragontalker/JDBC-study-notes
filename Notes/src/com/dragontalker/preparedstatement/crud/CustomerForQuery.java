@@ -1,5 +1,6 @@
 package com.dragontalker.preparedstatement.crud;
 
+import com.dragontalker.bean.Customer;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
@@ -32,8 +33,11 @@ public class CustomerForQuery {
             String email = resultSet.getString(3);
             Date birth = resultSet.getDate(4);
 
-
-
+            //将数据封装成一个对象
+            Customer customer = new Customer(id, name, email, birth);
+            System.out.println(customer);
         }
+
+        //关闭资源
     }
 }
