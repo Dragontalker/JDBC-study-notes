@@ -1,7 +1,5 @@
 package com.dragontalker.util;
 
-import com.dragontalker.connection.ConnectionTest;
-
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +13,7 @@ public class JDBCUtils {
 
     /**
      * 获取数据库的连接
-     * @return
+     * @return Connection
      * @throws Exception
      */
     public static Connection getConnection() throws Exception{
