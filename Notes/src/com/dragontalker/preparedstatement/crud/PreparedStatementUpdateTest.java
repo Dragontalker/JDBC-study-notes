@@ -21,8 +21,11 @@ import java.util.Properties;
 public class PreparedStatementUpdateTest {
     @Test
     public void testUpdate1() {
-        String sql = "delete from customers where id = ?";
-        update(sql, 19);
+        String sql1 = "delete from customers where id = ?";
+        update(sql1, 19);
+
+        String sql2 = "update from `order` set order_name = ? where order_id = ?";
+        update(sql2, "DD", "2");
     }
 
     //通用的增删改操作
