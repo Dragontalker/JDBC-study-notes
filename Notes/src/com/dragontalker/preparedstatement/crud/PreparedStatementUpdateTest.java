@@ -22,6 +22,13 @@ public class PreparedStatementUpdateTest {
     //修改customers表的一条记录
     @Test
     public void testUpdate() {
+        //1. 获取数据库的连接
+
+        //2. 预编译sql语句, 返回PreparedStatement的实例
+
+        //3. 填充占位符
+
+        //4. 执行
 
     }
 
