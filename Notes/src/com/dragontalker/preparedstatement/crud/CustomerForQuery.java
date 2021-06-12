@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * 针对于Customer表的查询操作
@@ -18,5 +19,7 @@ public class CustomerForQuery {
         String sql = "select id, name, email, birth from customers where id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
 
+        //执行并返回结果集
+        ResultSet resultSet = ps.executeQuery();
     }
 }
