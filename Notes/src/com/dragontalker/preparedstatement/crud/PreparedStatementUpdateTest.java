@@ -24,9 +24,11 @@ public class PreparedStatementUpdateTest {
     @Test
     public void testUpdate() throws Exception {
         //1. 获取数据库的连接
-        JDBCUtils.getConnection();
+        Connection conn = JDBCUtils.getConnection();
 
         //2. 预编译sql语句, 返回PreparedStatement的实例
+        String sql = "update customers set name = ? where id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
 
         //3. 填充占位符
 
