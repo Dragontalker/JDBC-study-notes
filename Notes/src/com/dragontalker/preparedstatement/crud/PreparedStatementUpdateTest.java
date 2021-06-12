@@ -24,7 +24,7 @@ public class PreparedStatementUpdateTest {
         String sql1 = "delete from customers where id = ?";
         update(sql1, 19);
 
-        String sql2 = "update from `order` set order_name = ? where order_id = ?";
+        String sql2 = "update `order` set order_name = ? where order_id = ?";
         update(sql2, "DD", "2");
     }
 
