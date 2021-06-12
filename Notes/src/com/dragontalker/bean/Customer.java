@@ -1,5 +1,7 @@
 package com.dragontalker.bean;
 
+import java.sql.Date;
+
 /**
  * ORM编程思想(Object Relational Mapping)
  * 一个数据表对应一个Java类
@@ -9,5 +11,7 @@ package com.dragontalker.bean;
 
 public class Customer {
     private int id;
-
+    private String name;
+    private String email;
+    private Date birth;
 }
