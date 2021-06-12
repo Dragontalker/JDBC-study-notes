@@ -25,23 +25,7 @@ public class PreparedStatementUpdateTest {
         Connection connection = null;
         PreparedStatement ps = null;
         try {
-            //1. 读取配置文件中的4个基本信息
-            InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream("jdbc.properties");
 
-            Properties props = new Properties();
-            props.load(is);
-
-            String url = props.getProperty("url");
-            String user = props.getProperty("user");
-            String password = props.getProperty("password");
-            String driverClass = props.getProperty("driverClass");
-
-            //2. 加载驱动
-            Class.forName(driverClass);
-
-            //3. 获取连接
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println(connection);
 
             //4. 预编译sql语句, 返回PrepareStatement的实例
             String sql = "insert into customers(name, email, birth) values(?,?,?)";
