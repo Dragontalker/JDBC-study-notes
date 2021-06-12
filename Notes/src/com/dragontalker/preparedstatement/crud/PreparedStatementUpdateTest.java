@@ -19,6 +19,11 @@ import java.util.Properties;
  */
 
 public class PreparedStatementUpdateTest {
+    @Test
+    public void testUpdate1() {
+        String sql = "delete from customers where id = ?";
+        update(sql, 19);
+    }
 
     //通用的增删改操作
     public void update(String sql, Object ... args) {
@@ -35,7 +40,6 @@ public class PreparedStatementUpdateTest {
         } finally {
             JDBCUtils.closeResource(conn, ps);
         }
-
     }
 
     //修改customers表的一条记录
