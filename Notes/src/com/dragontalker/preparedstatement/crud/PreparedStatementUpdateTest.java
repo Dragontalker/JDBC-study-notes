@@ -22,22 +22,29 @@ public class PreparedStatementUpdateTest {
 
     //修改customers表的一条记录
     @Test
-    public void testUpdate() throws Exception {
-        //1. 获取数据库的连接
-        Connection conn = JDBCUtils.getConnection();
+    public void testUpdate() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            //1. 获取数据库的连接
+            conn = JDBCUtils.getConnection();
 
-        //2. 预编译sql语句, 返回PreparedStatement的实例
-        String sql = "update customers set name = ? where id = ?";
-        PreparedStatement ps = conn.prepareStatement(sql);
+            //2. 预编译sql语句, 返回PreparedStatement的实例
+            String sql = "update customers set name = ? where id = ?";
+            ps = conn.prepareStatement(sql);
 
-        //3. 填充占位符
-        ps.setObject(1, "SunWuKong");
-        ps.setObject(2, 19);
+            //3. 填充占位符
+            ps.setObject(1, "SunWuKong");
+            ps.setObject(2, 19);
 
-        //4. 执行
-
-        //5. 资源的关闭
-
+            //4. 执行
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //5. 资源的关闭
+            JDBCUtils.closeResource(conn, ps);
+        }
     }
 
     //向customers表中添加一条记录
