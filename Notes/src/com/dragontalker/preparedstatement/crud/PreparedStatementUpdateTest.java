@@ -45,20 +45,7 @@ public class PreparedStatementUpdateTest {
             e.printStackTrace();
         } finally {
             //7. 资源的关闭
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+
         }
     }
 }

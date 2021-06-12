@@ -3,6 +3,8 @@ package com.dragontalker.util;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -33,5 +35,27 @@ public class JDBCUtils {
 
         //3. 获取连接
         return DriverManager.getConnection(url, user, password);
+    }
+
+    /**
+     * 关闭资源的操作
+     * @param conn
+     * @param ps
+     */
+    public void closeResource(Connection conn, Statement ps) {
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 }
