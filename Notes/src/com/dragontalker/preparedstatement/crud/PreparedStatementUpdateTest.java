@@ -20,6 +20,11 @@ import java.util.Properties;
 
 public class PreparedStatementUpdateTest {
 
+    //通用的增删改操作
+    public void update() {
+
+    }
+
     //修改customers表的一条记录
     @Test
     public void testUpdate() {
