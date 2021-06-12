@@ -1,6 +1,7 @@
 package com.dragontalker.preparedstatement.crud;
 
 import com.dragontalker.connection.ConnectionTest;
+import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -21,8 +22,9 @@ public class PreparedStatementUpdateTest {
 
     //修改customers表的一条记录
     @Test
-    public void testUpdate() {
+    public void testUpdate() throws Exception {
         //1. 获取数据库的连接
+        JDBCUtils.getConnection();
 
         //2. 预编译sql语句, 返回PreparedStatement的实例
 
