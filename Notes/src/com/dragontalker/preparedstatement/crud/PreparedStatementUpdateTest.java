@@ -31,6 +31,8 @@ public class PreparedStatementUpdateTest {
         PreparedStatement ps = conn.prepareStatement(sql);
 
         //3. 填充占位符
+        ps.setObject(1, "SunWuKong");
+        ps.setObject(2, 19);
 
         //4. 执行
 
