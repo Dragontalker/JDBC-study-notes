@@ -30,6 +30,8 @@ public class PreparedStatementUpdateTest {
 
         //4. 执行
 
+        //5. 资源的关闭
+
     }
 
     //向customers表中添加一条记录
