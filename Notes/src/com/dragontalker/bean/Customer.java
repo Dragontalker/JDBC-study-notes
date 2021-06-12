@@ -14,4 +14,15 @@ public class Customer {
     private String name;
     private String email;
     private Date birth;
+
+    public Customer() {}
+
+    public Customer(int id, String name, String email, Date birth) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.birth = birth;
+    }
+
+
 }
