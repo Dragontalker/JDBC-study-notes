@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 public class CustomerForQuery {
 
     @Test
-    public void testQuery1() {
+    public void testQuery1() throws Exception{
         Connection conn = JDBCUtils.getConnection();
         String sql = "select id, name, email, birth from customers where id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -31,6 +31,8 @@ public class CustomerForQuery {
             String name = resultSet.getString(2);
             String email = resultSet.getString(3);
             Date birth = resultSet.getDate(4);
+
+
 
         }
     }
