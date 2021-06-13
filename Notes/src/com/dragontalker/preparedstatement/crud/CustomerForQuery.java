@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * 针对于Customer表的查询操作
+ * 针对于Customers表的查询操作
  */
 
 public class CustomerForQuery {
