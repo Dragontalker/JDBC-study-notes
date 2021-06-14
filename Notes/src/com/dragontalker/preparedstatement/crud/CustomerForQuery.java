@@ -4,10 +4,7 @@ import com.dragontalker.bean.Customer;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  * 针对于Customers表的查询操作
@@ -18,10 +15,22 @@ public class CustomerForQuery {
     /**
      * @Description 针对customers表的通用的查询操作
      */
-    public void queryForCustomers(String sql, Object ... args) throws Exception{
+    public Customer queryForCustomers(String sql, Object ... args) throws Exception{
         Connection conn = JDBCUtils.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(sql);
+        for (int i = 0; i < args.length; i++) {
+            ps.setObject(i + 1, args[i]);
+        }
+
+        ResultSet rs = ps.executeQuery();
+
+        //获取结果集的元数据
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        if(rs.next()) {
+            rs.
+        }
     }
 
     @Test
