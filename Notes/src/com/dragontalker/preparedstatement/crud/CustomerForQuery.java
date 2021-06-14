@@ -18,8 +18,10 @@ public class CustomerForQuery {
     /**
      * @Description 针对customers表的通用的查询操作
      */
-    public void queryForCustomers() throws Exception{
+    public void queryForCustomers(String sql, Object ... args) throws Exception{
         Connection conn = JDBCUtils.getConnection();
+
+        PreparedStatement ps = conn.prepareStatement(sql);
     }
 
     @Test
