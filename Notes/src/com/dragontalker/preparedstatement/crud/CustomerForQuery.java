@@ -18,6 +18,10 @@ public class CustomerForQuery {
         String sql = "select id, name, birth, email from customers where id = ?";
         Customer customer = queryForCustomers(sql, 13);
         System.out.println(customer);
+
+        String sql1 = "select name, email from customers where name = ?";
+        Customer customer1 = queryForCustomers(sql1, "LinZhiLing");
+        System.out.println(customer1);
     }
 
     /**
