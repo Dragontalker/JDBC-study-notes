@@ -1,9 +1,11 @@
 package com.dragontalker.preparedstatement.crud;
 
+import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -21,6 +23,15 @@ public class OrderForQuery {
         ps.setObject(1, 1);
 
         ResultSet rs = ps.executeQuery();
+        if(rs.next()) {
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+            Date date = rs.getDate(3);
 
+            Order order = new Order(id, name, date);
+            System.out.println(order);
+        }
+
+        JDBCUtils.closeResource(conn, ps, rs);
     }
 }
