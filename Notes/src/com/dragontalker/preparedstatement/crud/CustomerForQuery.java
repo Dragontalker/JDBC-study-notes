@@ -13,6 +13,13 @@ import java.sql.*;
 
 public class CustomerForQuery {
 
+    @Test
+    public void testQueryForCustomers() {
+        String sql = "select id, name, birth, email from customers where id = ?";
+        Customer customer = queryForCustomers(sql, 13);
+        System.out.println(customer);
+    }
+
     /**
      * @Description 针对customers表的通用的查询操作
      */
