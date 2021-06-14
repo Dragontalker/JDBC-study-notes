@@ -27,6 +27,8 @@ public class CustomerForQuery {
 
         //获取结果集的元数据
         ResultSetMetaData rsmd = rs.getMetaData();
+        //通过ResultSetMetaData获取结果集中的列数
+        int columnCount = rsmd.getColumnCount();
 
         if(rs.next()) {
             rs.
