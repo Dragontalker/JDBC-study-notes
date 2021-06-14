@@ -16,22 +16,29 @@ import java.sql.ResultSet;
 public class OrderForQuery {
 
     @Test
-    public void testQuery1() throws Exception{
-        Connection conn = JDBCUtils.getConnection();
-        String sql = "select order_id, order_name, order_date from `orders` where id = ?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setObject(1, 1);
+    public void testQuery1() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            String sql = "select order_id, order_name, order_date from `orders` where order_id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1, 1);
 
-        ResultSet rs = ps.executeQuery();
-        if(rs.next()) {
-            int id = rs.getInt(1);
-            String name = rs.getString(2);
-            Date date = rs.getDate(3);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                Date date = rs.getDate(3);
 
-            Order order = new Order(id, name, date);
-            System.out.println(order);
+                Order order = new Order(id, name, date);
+                System.out.println(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, ps, rs);
         }
-
-        JDBCUtils.closeResource(conn, ps, rs);
     }
 }
