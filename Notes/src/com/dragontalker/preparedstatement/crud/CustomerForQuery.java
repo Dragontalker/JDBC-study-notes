@@ -33,7 +33,9 @@ public class CustomerForQuery {
 
         if(rs.next()) {
             Customer cust = new Customer();
+            //处理一行数据中的每一个列
             for (int i = 0; i < columnCount; i++) {
+                //获取列值
                 Object columnValue = rs.getObject(i + 1);
 
                 //获取每个列的列名
@@ -44,7 +46,11 @@ public class CustomerForQuery {
                 field.setAccessible(true);
                 field.set(cust, columnValue);
             }
+
+            return cust;
         }
+
+        return null;
     }
 
     @Test
