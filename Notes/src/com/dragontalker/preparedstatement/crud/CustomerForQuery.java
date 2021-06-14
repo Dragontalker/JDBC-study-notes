@@ -16,40 +16,48 @@ public class CustomerForQuery {
     /**
      * @Description 针对customers表的通用的查询操作
      */
-    public Customer queryForCustomers(String sql, Object ... args) throws Exception{
-        Connection conn = JDBCUtils.getConnection();
+    public Customer queryForCustomers(String sql, Object ... args) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = JDBCUtils.getConnection();
 
-        PreparedStatement ps = conn.prepareStatement(sql);
-        for (int i = 0; i < args.length; i++) {
-            ps.setObject(i + 1, args[i]);
-        }
-
-        ResultSet rs = ps.executeQuery();
-
-        //获取结果集的元数据
-        ResultSetMetaData rsmd = rs.getMetaData();
-        //通过ResultSetMetaData获取结果集中的列数
-        int columnCount = rsmd.getColumnCount();
-
-        if(rs.next()) {
-            Customer cust = new Customer();
-            //处理一行数据中的每一个列
-            for (int i = 0; i < columnCount; i++) {
-                //获取列值
-                Object columnValue = rs.getObject(i + 1);
-
-                //获取每个列的列名
-                String columnName = rsmd.getColumnName(i + 1);
-
-                //给cust对象的指定的某个属性, 赋值为columnValue, 通过反射
-                Field field = Customer.class.getDeclaredField(columnName);
-                field.setAccessible(true);
-                field.set(cust, columnValue);
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
             }
 
-            return cust;
-        }
+            rs = ps.executeQuery();
 
+            //获取结果集的元数据
+            ResultSetMetaData rsmd = rs.getMetaData();
+            //通过ResultSetMetaData获取结果集中的列数
+            int columnCount = rsmd.getColumnCount();
+
+            if(rs.next()) {
+                Customer cust = new Customer();
+                //处理一行数据中的每一个列
+                for (int i = 0; i < columnCount; i++) {
+                    //获取列值
+                    Object columnValue = rs.getObject(i + 1);
+
+                    //获取每个列的列名
+                    String columnName = rsmd.getColumnName(i + 1);
+
+                    //给cust对象的指定的某个属性, 赋值为columnValue, 通过反射
+                    Field field = Customer.class.getDeclaredField(columnName);
+                    field.setAccessible(true);
+                    field.set(cust, columnValue);
+                }
+
+                return cust;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, ps, rs);
+        }
         return null;
     }
 
