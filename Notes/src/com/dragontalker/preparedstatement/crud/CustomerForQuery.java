@@ -31,7 +31,10 @@ public class CustomerForQuery {
         int columnCount = rsmd.getColumnCount();
 
         if(rs.next()) {
-            rs.
+            Customer cust = new Customer();
+            for (int i = 0; i < columnCount; i++) {
+                Object value = rs.getObject(i + 1);
+            }
         }
     }
 
