@@ -15,6 +15,13 @@ import java.sql.ResultSet;
 
 public class CustomerForQuery {
 
+    /**
+     * @Description 针对customers表的通用的查询操作
+     */
+    public void queryForCustomers() {
+
+    }
+
     @Test
     public void testQuery1() {
         Connection conn = null;
