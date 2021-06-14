@@ -4,6 +4,7 @@ import com.dragontalker.bean.Customer;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.sql.*;
 
 /**
@@ -33,7 +34,15 @@ public class CustomerForQuery {
         if(rs.next()) {
             Customer cust = new Customer();
             for (int i = 0; i < columnCount; i++) {
-                Object value = rs.getObject(i + 1);
+                Object columnValue = rs.getObject(i + 1);
+
+                //获取每个列的列名
+                String columnName = rsmd.getColumnName(i + 1);
+
+                //给cust对象的指定的某个属性, 赋值为columnValue, 通过反射
+                Field field = Customer.class.getDeclaredField(columnName);
+                field.setAccessible(true);
+                field.set(cust, columnValue);
             }
         }
     }
