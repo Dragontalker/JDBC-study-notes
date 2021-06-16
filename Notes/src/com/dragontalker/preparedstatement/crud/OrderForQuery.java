@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * @Description 针对orders表的查询操作
+ * @Description 针对orders表的更删改查询操作
  */
 
 public class OrderForQuery {
