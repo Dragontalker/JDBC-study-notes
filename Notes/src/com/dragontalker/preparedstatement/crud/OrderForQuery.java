@@ -21,6 +21,16 @@ public class OrderForQuery {
      */
     public Order orderForQuery(String sql, Object ... args) throws Exception {
         Connection conn = JDBCUtils.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        for(int i = 0; i < args.length; i++) {
+            ps.setObject(i + 1, args[i]);
+        }
+
+        //执行结果集
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            Order order = new Order();
+        }
     }
 
     @Test
