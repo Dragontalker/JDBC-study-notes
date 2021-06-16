@@ -15,6 +15,10 @@ import java.sql.ResultSet;
 
 public class OrderForQuery {
 
+    public Order orderForQuery() {
+
+    }
+
     @Test
     public void testQuery1() {
         Connection conn = null;
