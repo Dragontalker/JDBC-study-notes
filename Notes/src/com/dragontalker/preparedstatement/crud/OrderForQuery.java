@@ -17,35 +17,43 @@ public class OrderForQuery {
      * 通用的针对于order表的查询操作
      * @return
      */
-    public Order orderForQuery(String sql, Object ... args) throws Exception {
-        Connection conn = JDBCUtils.getConnection();
-        PreparedStatement ps = conn.prepareStatement(sql);
-        for(int i = 0; i < args.length; i++) {
-            ps.setObject(i + 1, args[i]);
-        }
-
-        //执行结果集
-        ResultSet rs = ps.executeQuery();
-        ResultSetMetaData rsmd = rs.getMetaData();
-        //获取列数
-        int columnCount = rsmd.getColumnCount();
-        if(rs.next()){
-            Order order = new Order();
-            for(int i = 0; i < columnCount; i++) {
-                //获取每个列的列值: 通过ResultSet
-                Object columnValue = rs.getObject(i + 1);
-                //获取每个列的列名: 通过ResultSetMetaData
-                String columnName = rsmd.getColumnName(i + 1);
-
-                //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
-                Field field = Order.class.getDeclaredField(columnName);
-                field.setAccessible(true);
-                field.set(order, columnValue);
+    public Order orderForQuery(String sql, Object ... args){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            for(int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
             }
 
-            return order;
+            //执行结果集
+            rs = ps.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            //获取列数
+            int columnCount = rsmd.getColumnCount();
+            if(rs.next()){
+                Order order = new Order();
+                for(int i = 0; i < columnCount; i++) {
+                    //获取每个列的列值: 通过ResultSet
+                    Object columnValue = rs.getObject(i + 1);
+                    //获取每个列的列名: 通过ResultSetMetaData
+                    String columnName = rsmd.getColumnName(i + 1);
+
+                    //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
+                    Field field = Order.class.getDeclaredField(columnName);
+                    field.setAccessible(true);
+                    field.set(order, columnValue);
+                }
+
+                return order;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, ps, rs);
         }
-        JDBCUtils.closeResource(conn, ps, rs);
 
         return null;
     }
