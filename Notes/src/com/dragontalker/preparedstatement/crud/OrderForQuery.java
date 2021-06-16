@@ -19,8 +19,8 @@ public class OrderForQuery {
      * 通用的针对于order表的查询操作
      * @return
      */
-    public Order orderForQuery() {
-
+    public Order orderForQuery(String sql, Object ... args) throws Exception {
+        Connection conn = JDBCUtils.getConnection();
     }
 
     @Test
