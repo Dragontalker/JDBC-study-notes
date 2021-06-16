@@ -15,6 +15,10 @@ import java.sql.ResultSet;
 
 public class OrderForQuery {
 
+    /**
+     * 通用的针对于order表的查询操作
+     * @return
+     */
     public Order orderForQuery() {
 
     }
