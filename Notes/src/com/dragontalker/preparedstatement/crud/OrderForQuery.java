@@ -4,6 +4,7 @@ import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.sql.*;
 
 /**
@@ -33,10 +34,20 @@ public class OrderForQuery {
             for(int i = 0; i < columnCount; i++) {
                 //获取每个列的列值: 通过ResultSet
                 Object columnValue = rs.getObject(i + 1);
-                //获取每个列的列名: 通过ReseltSetMetaData
+                //获取每个列的列名: 通过ResultSetMetaData
                 String columnName = rsmd.getColumnName(i + 1);
+
+                //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
+                Field field = Order.class.getDeclaredField(columnName);
+                field.setAccessible(true);
+                field.set(order, columnValue);
             }
+
+            return order;
         }
+        JDBCUtils.closeResource(conn, ps, rs);
+
+        return null;
     }
 
     @Test
