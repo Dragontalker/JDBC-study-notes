@@ -4,10 +4,7 @@ import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  * @Description 针对orders表的更删改查询操作
@@ -28,8 +25,17 @@ public class OrderForQuery {
 
         //执行结果集
         ResultSet rs = ps.executeQuery();
+        ResultSetMetaData rsmd = rs.getMetaData();
+        //获取列数
+        int columnCount = rsmd.getColumnCount();
         if(rs.next()){
             Order order = new Order();
+            for(int i = 0; i < columnCount; i++) {
+                //获取每个列的列值: 通过ResultSet
+                Object columnValue = rs.getObject(i + 1);
+                //获取每个列的列名: 通过ReseltSetMetaData
+                String columnName = rsmd.getColumnName(i + 1);
+            }
         }
     }
 
