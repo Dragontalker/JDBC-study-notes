@@ -6,7 +6,7 @@ package com.dragontalker.preparedstatement.crud;
 
 public class PreparedStatementQueryTest {
 
-    public Object getInstance() {
+    public Object getInstance(String sql, Object ... args) {
         return null;
     }
 }
