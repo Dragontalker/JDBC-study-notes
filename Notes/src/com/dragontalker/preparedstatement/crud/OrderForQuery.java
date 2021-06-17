@@ -13,6 +13,13 @@ import java.sql.*;
 
 public class OrderForQuery {
 
+    @Test
+    public void testOrderForQuery() {
+        String sql = "select order_id orderId, order_name orderName, order_date orderDate from `orders` where order_id = ?";
+        Order order = orderForQuery(sql, 1);
+        System.out.println(order);
+    }
+
     /**
      * 通用的针对于order表的查询操作
      * @return
@@ -39,10 +46,11 @@ public class OrderForQuery {
                     //获取每个列的列值: 通过ResultSet
                     Object columnValue = rs.getObject(i + 1);
                     //获取每个列的列名: 通过ResultSetMetaData
-                    String columnName = rsmd.getColumnName(i + 1);
+                    //获取列的别名: getColumnLabel()
+                    String columnLabel = rsmd.getColumnLabel(i + 1);
 
                     //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
-                    Field field = Order.class.getDeclaredField(columnName);
+                    Field field = Order.class.getDeclaredField(columnLabel);
                     field.setAccessible(true);
                     field.set(order, columnValue);
                 }
