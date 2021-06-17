@@ -5,4 +5,8 @@ package com.dragontalker.preparedstatement.crud;
  */
 
 public class PreparedStatementQueryTest {
+
+    public Object getInstance() {
+        return null;
+    }
 }
