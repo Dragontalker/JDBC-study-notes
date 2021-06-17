@@ -13,6 +13,12 @@ import java.sql.*;
 
 public class OrderForQuery {
 
+    /**
+     * 针对于表的字段名于类的属性名不相同的情况:
+     * 1. 必须声明sql时, 使用类的属性名来命名字段的别名
+     * 2. 使用ResultSetMetaData时, 需要使用getColumnLabel()来替换getColumnName()来获取列的别名
+     *  补充说明: 如果sql中没有给字段起别名, getColumnLabel()获取的就是列名
+     */
     @Test
     public void testOrderForQuery() {
         String sql = "select order_id orderId, order_name orderName, order_date orderDate from `orders` where order_id = ?";
