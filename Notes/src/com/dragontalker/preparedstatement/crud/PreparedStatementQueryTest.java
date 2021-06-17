@@ -15,7 +15,7 @@ import java.sql.ResultSetMetaData;
 
 public class PreparedStatementQueryTest {
 
-    public Object getInstance(String sql, Object ... args) {
+    public <T> T getInstance(Class<T> clazz, String sql, Object ... args) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -32,7 +32,7 @@ public class PreparedStatementQueryTest {
             //获取列数
             int columnCount = rsmd.getColumnCount();
             if(rs.next()){
-                Order order = new Order();
+                T t = clazz.getDeclaredConstructor().newInstance();
                 for(int i = 0; i < columnCount; i++) {
                     //获取每个列的列值: 通过ResultSet
                     Object columnValue = rs.getObject(i + 1);
@@ -43,10 +43,10 @@ public class PreparedStatementQueryTest {
                     //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
                     Field field = Order.class.getDeclaredField(columnLabel);
                     field.setAccessible(true);
-                    field.set(order, columnValue);
+                    field.set(t, columnValue);
                 }
 
-                return order;
+                return t;
             }
         } catch (Exception e) {
             e.printStackTrace();
