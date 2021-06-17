@@ -1,5 +1,6 @@
 package com.dragontalker.preparedstatement.crud;
 
+import com.dragontalker.bean.Customer;
 import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
@@ -18,7 +19,9 @@ public class PreparedStatementQueryTest {
 
     @Test
     public void testGetInstance() {
-
+        String sql = "select id, name, email from customers where id = ?";
+        Customer customer = getInstance(Customer.class, sql, 12);
+        System.out.println(customer);
     }
 
     public <T> T getInstance(Class<T> clazz, String sql, Object ... args) {
@@ -38,7 +41,7 @@ public class PreparedStatementQueryTest {
             //获取列数
             int columnCount = rsmd.getColumnCount();
             if(rs.next()){
-                T t = clazz.getDeclaredConstructor().newInstance();
+                T t = clazz.newInstance();
                 for(int i = 0; i < columnCount; i++) {
                     //获取每个列的列值: 通过ResultSet
                     Object columnValue = rs.getObject(i + 1);
