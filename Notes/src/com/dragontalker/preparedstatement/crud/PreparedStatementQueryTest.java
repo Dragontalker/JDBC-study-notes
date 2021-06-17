@@ -28,6 +28,14 @@ public class PreparedStatementQueryTest {
         System.out.println(order);
     }
 
+    /**
+     * @Description 针对于不同的表的通用的查询操作
+     * @param clazz
+     * @param sql
+     * @param args
+     * @param <T>
+     * @return
+     */
     public <T> T getInstance(Class<T> clazz, String sql, Object ... args) {
         Connection conn = null;
         PreparedStatement ps = null;
