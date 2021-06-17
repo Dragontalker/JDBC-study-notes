@@ -22,6 +22,10 @@ public class PreparedStatementQueryTest {
         String sql = "select id, name, email from customers where id = ?";
         Customer customer = getInstance(Customer.class, sql, 12);
         System.out.println(customer);
+
+        String sql1 = "select order_id orderId, order_name orderName from `orders` where order_id = ?";
+        Order order = getInstance(Order.class, sql1, 2);
+        System.out.println(order);
     }
 
     public <T> T getInstance(Class<T> clazz, String sql, Object ... args) {
@@ -50,7 +54,7 @@ public class PreparedStatementQueryTest {
                     String columnLabel = rsmd.getColumnLabel(i + 1);
 
                     //通过反射, 将对象指定名的ColumnName的属性赋值为指定的值ColumnValue
-                    Field field = Order.class.getDeclaredField(columnLabel);
+                    Field field = clazz.getDeclaredField(columnLabel);
                     field.setAccessible(true);
                     field.set(t, columnValue);
                 }
