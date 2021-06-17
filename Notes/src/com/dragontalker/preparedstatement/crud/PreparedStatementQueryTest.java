@@ -25,6 +25,10 @@ public class PreparedStatementQueryTest {
         String sql1 = "select order_id orderId, order_name orderName from `orders` where order_id < ?";
         List<Order> list1 = getForList(Order.class, sql1, 5);
         list1.forEach(System.out::println);
+
+        String sql2 = "select order_id orderId, order_name orderName from `orders`";
+        List<Order> list2 = getForList(Order.class, sql2);
+        list2.forEach(System.out::println);
     }
 
     public <T> List<T> getForList(Class<T> clazz, String sql, Object ... args) {
