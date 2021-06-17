@@ -2,6 +2,7 @@ package com.dragontalker.preparedstatement.crud;
 
 import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
+import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -14,6 +15,11 @@ import java.sql.ResultSetMetaData;
  */
 
 public class PreparedStatementQueryTest {
+
+    @Test
+    public void testGetInstance() {
+
+    }
 
     public <T> T getInstance(Class<T> clazz, String sql, Object ... args) {
         Connection conn = null;
