@@ -16,6 +16,14 @@ import java.util.List;
 
 public class PreparedStatementQueryTest {
 
+    @Test
+    public void testGetForList() {
+        String sql = "select id, name, email from customers where id < ?";
+        List<Customer> list = getForList(Customer.class, sql, 12);
+        list.forEach(System.out::println);
+
+    }
+
     public <T> List<T> getForList(Class<T> clazz, String sql, Object ... args) {
         Connection conn = null;
         PreparedStatement ps = null;
