@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <c3p0-config>
-
+    <named-config name="hello-c3p0">
+        <!--    提供获取连接的4个基本信息     -->
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/test</property>
+        <property name="user">root</property>
+        <property name="password">password</property>
+    </named-config>
 </c3p0-config>
