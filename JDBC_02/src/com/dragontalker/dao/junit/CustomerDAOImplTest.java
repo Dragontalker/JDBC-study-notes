@@ -26,4 +26,18 @@ public class CustomerDAOImplTest {
             JDBCUtils.closeResource(conn, null);
         }
     }
+
+    @Test
+    public void testDeleteById() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            dao.deleteById(conn, 13);
+            System.out.println("删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
 }
