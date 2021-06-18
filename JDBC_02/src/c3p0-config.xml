@@ -6,5 +6,9 @@
         <property name="jdbcUrl">jdbc:mysql://localhost:3306/test</property>
         <property name="user">root</property>
         <property name="password">password</property>
+
+        <!--    提供数据库连接池管理的基本信息     -->
+        <!--    当数据库连接池中的连接数不够时, c3p0一次性向数据库服务器申请的连接数     -->
+        <property name="acquireIncrement">5</property>
     </named-config>
 </c3p0-config>
