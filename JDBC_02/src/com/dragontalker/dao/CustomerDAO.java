@@ -15,4 +15,11 @@ public interface CustomerDAO {
      * @param cust
      */
     void insert(Connection conn, Customer cust);
+
+    /**
+     * @Description 根据指定的id, 删除表中的一条记录
+     * @param conn
+     * @param id
+     */
+    void deleteById(Connection conn, int id);
 }
