@@ -10,7 +10,7 @@ import java.util.List;
 /*
 封装了对于数据表的通用的操作
  */
-public class BaseDAO {
+public abstract class BaseDAO {
 
     public int update(Connection conn, String sql, Object ... args) {
         PreparedStatement ps = null;
@@ -112,6 +112,7 @@ public class BaseDAO {
         return null;
     }
 
+    //用于查询特殊值的通用的方法
     public <E> E getValue(Connection conn, String sql, Object ... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
