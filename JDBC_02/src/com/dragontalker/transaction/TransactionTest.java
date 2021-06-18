@@ -72,20 +72,25 @@ public class TransactionTest {
     //****************************考虑数据库事务的转账操作****************************
 
     @Test
-    public void testUpdateWithTx() throws Exception{
-        Connection conn = JDBCUtils.getConnection();
-        String sql1 = "update user_table set balance = balance - 100 where user = ?";
-        update(conn, sql1, "AA");
+    public void testUpdateWithTx() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            String sql1 = "update user_table set balance = balance - 100 where user = ?";
+            update(conn, sql1, "AA");
 
-        //模拟网路异常
-        //System.out.println(10 / 0);
+            //模拟网路异常
+            //System.out.println(10 / 0);
 
-        String sql2 = "update user_table set balance = balance + 100 where user = ?";
-        update(conn, sql2, "BB");
+            String sql2 = "update user_table set balance = balance + 100 where user = ?";
+            update(conn, sql2, "BB");
 
-        System.out.println("转账成功");
-
-        JDBCUtils.closeResource(conn, null);
+            System.out.println("转账成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
     }
 
     //通用的增删改操作 --- version 2.0
