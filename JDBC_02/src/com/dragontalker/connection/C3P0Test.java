@@ -20,12 +20,14 @@ public class C3P0Test {
         String password = props.getProperty("password");
         String driverClass = props.getProperty("driverClass");
 
+        //获取C3P0数据库连接池
         ComboPooledDataSource cpds = new ComboPooledDataSource();
         cpds.setDriverClass(driverClass); //loads the jdbc driver
         cpds.setJdbcUrl(url);
         cpds.setUser(user);
         cpds.setPassword(password);
 
+        //通过设置相关的参数, 对数据库连接池进行管理
         //设置初始时数据库连接池中的连接数
         cpds.setInitialPoolSize(10);
     }
