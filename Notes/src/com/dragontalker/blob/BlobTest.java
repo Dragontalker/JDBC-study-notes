@@ -6,7 +6,9 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * @Description 测试使用PreparedStatement操作Blob类型的数据
@@ -40,6 +42,17 @@ public class BlobTest {
         Connection conn = JDBCUtils.getConnection();
         String sql = "select id, name, email, birth, photo from customers where id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, 21);
 
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            //方式一:
+//            int id = rs.getInt(1);
+//            String name = rs.getString(2);
+//            String email = rs.getString(3);
+//            Date birth = rs.getDate(4);
+
+
+        }
     }
 }
