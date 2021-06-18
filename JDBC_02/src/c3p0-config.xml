@@ -14,5 +14,9 @@
         <property name="initialPoolSize">10</property>
         <!--    c3p0数据库连接池维护的最少连接数     -->
         <property name="minPoolSize">10</property>
+        <!--    c3p0数据库连接池维护的最多的连接数     -->
+        <property name="maxPoolSize">100</property>
+        <!--    c3p0数据库连接池维护的最多的Statement的个数     -->
+        <property name="maxStatements">50</property>
     </named-config>
 </c3p0-config>
