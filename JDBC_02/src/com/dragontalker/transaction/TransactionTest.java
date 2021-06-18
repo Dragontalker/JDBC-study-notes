@@ -108,6 +108,15 @@ public class TransactionTest {
                 throwables.printStackTrace();
             }
         } finally {
+            //修改起为自动提交
+            //主要针对数据库连接池的使用
+            try {
+                if (conn != null) {
+                    conn.setAutoCommit(true);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             JDBCUtils.closeResource(conn, null);
         }
     }
