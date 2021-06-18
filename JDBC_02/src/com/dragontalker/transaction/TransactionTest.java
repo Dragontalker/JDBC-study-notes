@@ -145,6 +145,10 @@ public class TransactionTest {
     public void testTransactionSelect() throws Exception{
         Connection conn = JDBCUtils.getConnection();
 
+        String sql = "select user, password, balance from user_table where user = ?";
+        User user = getInstance(conn, User.class, sql, "CC");
+
+        System.out.println(user);
 
     }
 
