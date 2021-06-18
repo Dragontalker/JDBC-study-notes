@@ -85,4 +85,18 @@ public class CustomerDAOImplTest {
             JDBCUtils.closeResource(conn, null);
         }
     }
+
+    @Test
+    public void testGetCount() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            Long count = dao.getCount(conn);
+            System.out.println("表中的记录数为: " + count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
 }
