@@ -6,6 +6,11 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+/*
+1. 什么叫数据库事务?
+    - 事务: 一组逻辑单元, 使数据从一种状态变换到另一种状态
+        > 一组逻辑单元: 一个或多个DML操作
+ */
 public class TransactionTest {
 
     /*
@@ -18,6 +23,9 @@ public class TransactionTest {
     public void testUpdate(){
         String sql1 = "update user_table set balance = balance - 100 where user = ?";
         update(sql1, "AA");
+
+        //模拟网路异常
+        //System.out.println(10 / 0);
 
         String sql2 = "update user_table set balance = balance + 100 where user = ?";
         update(sql2, "BB");
