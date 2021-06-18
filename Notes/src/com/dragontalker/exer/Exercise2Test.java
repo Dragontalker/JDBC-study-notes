@@ -22,6 +22,9 @@ public class Exercise2Test {
 
         System.out.println("准考证号:");
         String examCard = scanner.next();
+
+        System.out.println("学生姓名:");
+        String studentName = scanner.next();
     }
 
     //通用的增删改操作
