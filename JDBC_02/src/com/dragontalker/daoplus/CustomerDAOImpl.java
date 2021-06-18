@@ -28,13 +28,13 @@ public class CustomerDAOImpl extends BaseDAO<Customer> implements CustomerDAO {
     @Override
     public Customer getCustomerById(Connection conn, int id) {
         String sql = "select id, name, email, birth from customers where id = ?";
-        return getInstance(conn, Customer.class, sql, id);
+        return getInstance(conn, sql, id);
     }
 
     @Override
     public List<Customer> getAll(Connection conn) {
         String sql = "select id, name, email, birth from customers";
-        return getForList(conn, Customer.class, sql);
+        return getForList(conn, sql);
     }
 
     @Override

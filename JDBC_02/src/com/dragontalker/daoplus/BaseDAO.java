@@ -18,6 +18,7 @@ public abstract class BaseDAO<T> {
     private Class<T> clazz = null;
 
     {
+        //获取当前BaseDAO的子类继承的父类中的泛型
         Type genericSuperclass = this.getClass().getGenericSuperclass();
         ParameterizedType paramType = (ParameterizedType) genericSuperclass;
         Type[] typeArguments = paramType.getActualTypeArguments();//获取了父类的泛型参数
