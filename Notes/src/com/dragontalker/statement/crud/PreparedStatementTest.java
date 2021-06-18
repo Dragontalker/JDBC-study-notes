@@ -1,6 +1,9 @@
 package com.dragontalker.statement.crud;
 
+import com.dragontalker.bean.Customer;
+import com.dragontalker.bean.Order;
 import com.dragontalker.util.JDBCUtils;
+import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -12,6 +15,17 @@ import java.sql.ResultSetMetaData;
  * @Description 演示使用PreparedStatement替换Statement, 解决sql注入问题
  */
 public class PreparedStatementTest {
+
+    @Test
+    public void testGetInstance() {
+        String sql = "select id, name, email from customers where id = ?";
+        Customer customer = getInstance(Customer.class, sql, 12);
+        System.out.println(customer);
+
+        String sql1 = "select order_id orderId, order_name orderName from `orders` where order_id = ?";
+        Order order = getInstance(Order.class, sql1, 2);
+        System.out.println(order);
+    }
 
     /**
      * @Description 针对于不同的表的通用的查询操作
