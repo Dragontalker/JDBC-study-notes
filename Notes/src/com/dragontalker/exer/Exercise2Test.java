@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Scanner;
 
 //课后练习2
 public class Exercise2Test {
@@ -12,6 +13,13 @@ public class Exercise2Test {
     //问题1: 向ExamStudent表添加一条记录
     @Test
     public void testInsert() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("四级/六级:");
+        int type = scanner.nextInt();
+
+        System.out.println("身份证号:");
+        String IDCard = scanner.next();
+
 
     }
 
