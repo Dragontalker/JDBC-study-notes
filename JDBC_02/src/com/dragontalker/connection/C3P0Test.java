@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.util.Properties;
 
 public class C3P0Test {
@@ -30,5 +31,8 @@ public class C3P0Test {
         //通过设置相关的参数, 对数据库连接池进行管理
         //设置初始时数据库连接池中的连接数
         cpds.setInitialPoolSize(10);
+
+        Connection connection = cpds.getConnection();
+        System.out.println(connection);
     }
 }
