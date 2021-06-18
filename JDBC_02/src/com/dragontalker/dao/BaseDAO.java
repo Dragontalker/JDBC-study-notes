@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
+DAO: data(base) access object
 封装了对于数据表的通用的操作
  */
 public abstract class BaseDAO {
