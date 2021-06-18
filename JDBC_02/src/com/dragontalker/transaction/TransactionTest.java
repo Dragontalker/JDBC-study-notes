@@ -145,6 +145,7 @@ public class TransactionTest {
     public void testTransactionSelect() throws Exception{
         Connection conn = JDBCUtils.getConnection();
 
+
     }
 
     @Test
@@ -154,7 +155,7 @@ public class TransactionTest {
 
     //通用的查询操作, 用于返回数据表中的一条记录
     //version 2.0 考虑上事务
-    public <T> List<T> getForList(Connection conn, Class<T> clazz, String sql, Object ... args) {
+    public <T> T getInstance(Connection conn, Class<T> clazz, String sql, Object ... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -168,11 +169,8 @@ public class TransactionTest {
             ResultSetMetaData rsmd = rs.getMetaData();
             //获取列数
             int columnCount = rsmd.getColumnCount();
-            //创建集合对象
-            ArrayList<T> list = new ArrayList<>();
-            while(rs.next()){
+            if(rs.next()){
                 T t = clazz.newInstance();
-                //处理结果集一行数据中的每一个列: 给t对象指定的属性赋值
                 for(int i = 0; i < columnCount; i++) {
                     //获取每个列的列值: 通过ResultSet
                     Object columnValue = rs.getObject(i + 1);
@@ -186,9 +184,8 @@ public class TransactionTest {
                     field.set(t, columnValue);
                 }
 
-                list.add(t);
+                return t;
             }
-            return list;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
