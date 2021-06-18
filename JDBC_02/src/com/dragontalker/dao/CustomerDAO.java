@@ -29,4 +29,11 @@ public interface CustomerDAO {
      * @param cust
      */
     void updateById(Connection conn, Customer cust);
+
+    /**
+     * @Description 根据指定的id查询得到对应的Customer对象
+     * @param conn
+     * @param id
+     */
+    void getCustomerById(Connection conn, int id);
 }
