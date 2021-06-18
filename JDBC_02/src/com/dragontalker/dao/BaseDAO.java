@@ -3,10 +3,7 @@ package com.dragontalker.dao;
 import com.dragontalker.utils.JDBCUtils;
 
 import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +112,24 @@ public class BaseDAO {
         return null;
     }
 
-    public void getValue(Connection conn, String sql, Object ... args) throws Exception{
-        PreparedStatement ps = conn.prepareStatement(sql);
+    public <E> E getValue(Connection conn, String sql, Object ... args) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                return (E) rs.getObject(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps, rs);
+        }
+        return null;
     }
 }
