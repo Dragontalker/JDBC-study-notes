@@ -153,8 +153,8 @@ public class TransactionTest {
     }
 
     @Test
-    public void testTransactionUpdate() {
-
+    public void testTransactionUpdate() throws Exception{
+        Connection conn = JDBCUtils.getConnection();
     }
 
     //通用的查询操作, 用于返回数据表中的一条记录
