@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /*
 1. 什么叫数据库事务?
@@ -78,7 +79,7 @@ public class TransactionTest {
             conn = JDBCUtils.getConnection();
             System.out.println(conn.getAutoCommit());
 
-            //取消数据的自动提交
+            //1. 取消数据的自动提交
             conn.setAutoCommit(false);
 
 
@@ -93,10 +94,19 @@ public class TransactionTest {
 
             System.out.println("转账成功");
 
-            //提交数据
+            //2. 提交数据
             conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
+
+            //3. 回滚数据
+            try {
+                if (conn != null) {
+                    conn.rollback();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         } finally {
             JDBCUtils.closeResource(conn, null);
         }
