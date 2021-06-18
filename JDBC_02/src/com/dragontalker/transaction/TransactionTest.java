@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 
 public class TransactionTest {
 
+    //通用的增删改操作 --- version 1.0
     public int update(String sql, Object ... args) {
         Connection conn = null;
         PreparedStatement ps = null;
