@@ -9,7 +9,8 @@ import java.util.List;
 public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
     @Override
     public void insert(Connection conn, Customer cust) {
-
+        String sql = "insert into customers(name, email, birth) values(?, ?, ?)";
+        update(conn, sql, cust.getName(), cust.getEmail(), cust.getBirth());
     }
 
     @Override
