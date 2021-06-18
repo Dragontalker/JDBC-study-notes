@@ -7,6 +7,7 @@ package com.dragontalker.dao;
 import com.dragontalker.bean.Customer;
 
 import java.sql.Connection;
+import java.util.List;
 
 public interface CustomerDAO {
     /**
@@ -36,4 +37,11 @@ public interface CustomerDAO {
      * @param id
      */
     void getCustomerById(Connection conn, int id);
+
+    /**
+     * @Description 查询表中的所有记录构成的集合
+     * @param conn
+     * @return
+     */
+    List<Customer> getAll(Connection conn);
 }
