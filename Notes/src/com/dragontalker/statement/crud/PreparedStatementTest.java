@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.Scanner;
 
 /**
  * @Description 演示使用PreparedStatement替换Statement, 解决sql注入问题
@@ -17,14 +18,21 @@ import java.sql.ResultSetMetaData;
 public class PreparedStatementTest {
 
     @Test
-    public void testGetInstance() {
-        String sql = "select id, name, email from customers where id = ?";
-        Customer customer = getInstance(Customer.class, sql, 12);
-        System.out.println(customer);
+    public void testLogin() {
+        Scanner scanner = new Scanner(System.in);
 
-        String sql1 = "select order_id orderId, order_name orderName from `orders` where order_id = ?";
-        Order order = getInstance(Order.class, sql1, 2);
-        System.out.println(order);
+        System.out.println("请输入用户名: ");
+        String user = scanner.nextLine();
+        System.out.println("请输入密码: ");
+        String password = scanner.nextLine();
+
+        String sql = "SELECT user, password FROM user_table WHERE user = '1' or ' AND password = '=1 or '1'";
+        User returnUser = getInstance(User.class, sql);
+        if(returnUser != null) {
+            System.out.println("登陆成功");
+        } else {
+            System.out.println("登录失败");
+        }
     }
 
     /**
