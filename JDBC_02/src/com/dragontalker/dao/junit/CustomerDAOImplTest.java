@@ -8,6 +8,7 @@ import org.junit.Test;
 import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.Date;
+import java.util.List;
 
 public class CustomerDAOImplTest {
 
@@ -64,6 +65,20 @@ public class CustomerDAOImplTest {
             conn = JDBCUtils.getConnection();
             Customer cust = dao.getCustomerById(conn, 19);
             System.out.println(cust);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
+
+    @Test
+    public void testGetAll() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            List<Customer> list = dao.getAll(conn);
+            list.forEach(System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
