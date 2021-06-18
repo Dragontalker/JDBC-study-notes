@@ -8,6 +8,12 @@ import java.sql.PreparedStatement;
 
 public class TransactionTest {
 
+    /*
+    针对于数据表user_table来说:
+    - AA用户给BB用户转账100
+    - update user_table set balance = balance - 100 where user = 'AA';
+    - update user_table set balance = balance + 100 where user = 'BB';
+     */
     @Test
     public void testUpdate(){
 
