@@ -33,7 +33,8 @@ public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
 
     @Override
     public List<Customer> getAll(Connection conn) {
-        return null;
+        String sql = "select id, name, email, birth from customers";
+        return getForList(conn, Customer.class, sql);
     }
 
     @Override
