@@ -20,7 +20,8 @@ public class Exercise2Test {
         System.out.println("身份证号:");
         String IDCard = scanner.next();
 
-
+        System.out.println("准考证号:");
+        String examCard = scanner.next();
     }
 
     //通用的增删改操作
