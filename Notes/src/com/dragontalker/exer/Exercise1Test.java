@@ -15,6 +15,12 @@ public class Exercise1Test {
         Scanner scanner = new Scanner(System.in);
         System.out.print("请输入用户名");
         String name = scanner.next();
+
+        System.out.print("请输入邮箱");
+        String email = scanner.next();
+
+        System.out.print("请输入生日");
+        String birthday = scanner.next();
     }
 
     //通用的增删改操作
