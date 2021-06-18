@@ -44,4 +44,11 @@ public interface CustomerDAO {
      * @return
      */
     List<Customer> getAll(Connection conn);
+
+    /**
+     * @Description 返回数据表中数据的条目数
+     * @param conn
+     * @return
+     */
+    Long getCount(Connection conn);
 }
