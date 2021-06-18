@@ -162,6 +162,9 @@ public class TransactionTest {
     public void testTransactionUpdate() throws Exception{
         Connection conn = JDBCUtils.getConnection();
 
+        //取消自动提交数据
+        conn.setAutoCommit(false);
+
         String sql = "update user_table set balance = ? where user = ?";
         User user = getInstance(conn, User.class, sql, 5000, "CC");
 
