@@ -1,6 +1,7 @@
 package com.dragontalker.exer;
 
 import com.dragontalker.util.JDBCUtils;
+import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +10,11 @@ import java.sql.PreparedStatement;
 public class Exercise2Test {
 
     //问题1: 向ExamStudent表添加一条记录
+    @Test
+    public void testInsert() {
+
+    }
+
     //通用的增删改操作
     public int update(String sql, Object ... args) {
         Connection conn = null;
