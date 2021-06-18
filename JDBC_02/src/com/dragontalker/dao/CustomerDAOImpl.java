@@ -45,6 +45,7 @@ public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
 
     @Override
     public Date getMaxBirth(Connection conn) {
-        return null;
+        String sql = "select max(birth) from customers";
+        return getValue(conn, sql);
     }
 }
