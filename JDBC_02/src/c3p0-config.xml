@@ -10,5 +10,9 @@
         <!--    提供数据库连接池管理的基本信息     -->
         <!--    当数据库连接池中的连接数不够时, c3p0一次性向数据库服务器申请的连接数     -->
         <property name="acquireIncrement">5</property>
+        <!--    c3p0数据库连接池中初始化时的连接数     -->
+        <property name="initialPoolSize">10</property>
+        <!--    c3p0数据库连接池维护的最少连接数     -->
+        <property name="minPoolSize">10</property>
     </named-config>
 </c3p0-config>
