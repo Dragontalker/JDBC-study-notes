@@ -146,6 +146,9 @@ public class TransactionTest {
         //获取当前连接的隔离级别
         //System.out.println(conn.getTransactionIsolation());
 
+        //设置数据库的隔离级别:
+        conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
         //取消自动提交数据
         conn.setAutoCommit(false);
 
@@ -167,6 +170,7 @@ public class TransactionTest {
         update(conn, sql, 5000, "CC");
 
         Thread.sleep(15000);
+        conn.commit();
         System.out.println("修改成功");
     }
 
