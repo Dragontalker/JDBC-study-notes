@@ -115,7 +115,7 @@ public class BaseDAO {
         return null;
     }
 
-    public void getValue() {
+    public void getValue(Connection conn, String sql, Object ... args) {
 
     }
 }
