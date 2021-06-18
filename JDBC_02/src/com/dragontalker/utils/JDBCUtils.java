@@ -1,10 +1,7 @@
 package com.dragontalker.utils;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 
 public class JDBCUtils {
@@ -32,6 +29,30 @@ public class JDBCUtils {
         if (conn != null) {
             try {
                 conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public static void closeResource(Connection conn, Statement ps, ResultSet rs) {
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        if (rs != null) {
+            try {
+                rs.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
