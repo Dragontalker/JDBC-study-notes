@@ -46,7 +46,9 @@ public class Exercise1Test {
             - 如果执行的查询操作, 有返回结果, 则此方法返回true;
             - 如果执行的是增、删、改、操作, 没有返回结果, 则此方法返回false;
              */
+            //方式一:
             //return ps.execute();
+            //方式二:
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
