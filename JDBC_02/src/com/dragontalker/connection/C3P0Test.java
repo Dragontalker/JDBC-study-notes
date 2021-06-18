@@ -1,6 +1,7 @@
 package com.dragontalker.connection;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mchange.v2.c3p0.DataSources;
 import org.junit.Test;
 
 import java.beans.PropertyVetoException;
@@ -34,5 +35,8 @@ public class C3P0Test {
 
         Connection connection = cpds.getConnection();
         System.out.println(connection);
+
+        //销毁数据库连接池
+        DataSources.destroy();
     }
 }
