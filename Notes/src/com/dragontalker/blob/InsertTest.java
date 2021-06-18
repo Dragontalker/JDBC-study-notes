@@ -14,7 +14,13 @@ package com.dragontalker.blob;
  * );
  *
  *
- * 方式一:
+ * 方式一: 使用Statement
+ * Connection conn = JDBCUtils.getConnection();
+ * Statement st = conn.createStatement();
+ * for (int i = 0; i <= 20000; i++) {
+ *     String sql = "insert into goods(name) values('name_" + i + "')";
+ *     st.execute(sql)
+ * }
  */
 
 public class InsertTest {
