@@ -21,6 +21,10 @@ public class DBCPTest {
         source.setUsername("root");
         source.setPassword("password");
 
+        //设置数据库管理相关的属性
+        source.setInitialSize(10);
+        source.setMaxActive(100);
+
         Connection conn = source.getConnection();
     }
 }
