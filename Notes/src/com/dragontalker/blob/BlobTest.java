@@ -38,5 +38,8 @@ public class BlobTest {
     @Test
     public void testQuery() throws Exception{
         Connection conn = JDBCUtils.getConnection();
+        String sql = "select id, name, email, birth, photo from customers where id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+
     }
 }
