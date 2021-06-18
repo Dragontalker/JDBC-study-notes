@@ -142,7 +142,8 @@ public class TransactionTest {
     //****************************************************************
 
     @Test
-    public void testTransactionSelect() {
+    public void testTransactionSelect() throws Exception{
+        Connection conn = JDBCUtils.getConnection();
 
     }
 
