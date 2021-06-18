@@ -99,4 +99,18 @@ public class CustomerDAOImplTest {
             JDBCUtils.closeResource(conn, null);
         }
     }
+
+    @Test
+    public void testGetMaxBirth() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            Date maxBirth = dao.getMaxBirth(conn);
+            System.out.println(maxBirth);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
 }
