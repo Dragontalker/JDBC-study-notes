@@ -22,4 +22,11 @@ public interface CustomerDAO {
      * @param id
      */
     void deleteById(Connection conn, int id);
+
+    /**
+     * @Description 针对内存中的cust对象, 去修改数据表中指定的记录
+     * @param conn
+     * @param cust
+     */
+    void updateById(Connection conn, Customer cust);
 }
