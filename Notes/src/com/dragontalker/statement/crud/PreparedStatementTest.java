@@ -14,6 +14,10 @@ import java.util.Scanner;
 
 /**
  * @Description 演示使用PreparedStatement替换Statement, 解决sql注入问题
+ *
+ * 除了解决Statement的拼串, sql问题之外, PrepareStatement还有哪些好处呢?
+ * 1. PreparedStatement操作Blob的数据, 而Statement做不到
+ * 2. PreparedStatement能更好的执行批量操作
  */
 public class PreparedStatementTest {
 
