@@ -145,6 +145,12 @@ public class TransactionTest {
     public void testTransactionSelect() throws Exception{
         Connection conn = JDBCUtils.getConnection();
 
+        //获取当前连接的隔离级别
+        //System.out.println(conn.getTransactionIsolation());
+
+        //取消自动提交数据
+        conn.setAutoCommit(false);
+
         String sql = "select user, password, balance from user_table where user = ?";
         User user = getInstance(conn, User.class, sql, "CC");
 
