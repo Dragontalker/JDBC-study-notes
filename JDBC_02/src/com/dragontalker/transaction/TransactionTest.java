@@ -76,6 +76,10 @@ public class TransactionTest {
         Connection conn = null;
         try {
             conn = JDBCUtils.getConnection();
+
+            //取消数据的自动提交
+            conn.setAutoCommit(false);
+
             String sql1 = "update user_table set balance = balance - 100 where user = ?";
             update(conn, sql1, "AA");
 
