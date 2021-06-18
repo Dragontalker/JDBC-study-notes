@@ -33,4 +33,10 @@ public class BlobTest {
 
         JDBCUtils.closeResource(conn, ps);
     }
+
+    //查询数据表customers中Blob类型的字段
+    @Test
+    public void testQuery() throws Exception{
+        Connection conn = JDBCUtils.getConnection();
+    }
 }
