@@ -21,7 +21,8 @@ public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
 
     @Override
     public void updateById(Connection conn, Customer cust) {
-
+        String sql = "update customers set name = ?, email = ?, birth = ? where id = ?";
+        update(conn, sql, cust.getName(), cust.getEmail(), cust.getBirth(), cust.getId());
     }
 
     @Override
