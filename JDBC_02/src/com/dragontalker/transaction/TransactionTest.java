@@ -16,7 +16,13 @@ public class TransactionTest {
      */
     @Test
     public void testUpdate(){
+        String sql1 = "update user_table set balance = balance - 100 where user = ?";
+        update(sql1, "AA");
 
+        String sql2 = "update user_table set balance = balance + 100 where user = ?";
+        update(sql2, "BB");
+
+        System.out.println("转账成功");
     }
 
     //通用的增删改操作 --- version 1.0
