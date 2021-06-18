@@ -114,4 +114,8 @@ public class BaseDAO {
 
         return null;
     }
+
+    public void getValue() {
+
+    }
 }
