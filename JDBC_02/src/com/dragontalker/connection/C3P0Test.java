@@ -8,10 +8,12 @@ import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class C3P0Test {
 
+    //方式一:
     @Test
     public void testGetConnection() throws Exception {
         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("jdbc.properties");
@@ -37,6 +39,14 @@ public class C3P0Test {
         System.out.println(connection);
 
         //销毁数据库连接池
-        DataSources.destroy();
+        DataSources.destroy(cpds);
+    }
+
+    //方式二: 使用配置文件
+    @Test
+    public void testGetConnection1() throws SQLException {
+        ComboPooledDataSource cpds = new ComboPooledDataSource("hello-c3p0");
+        Connection connection = cpds.getConnection();
+        System.out.println(connection);
     }
 }
