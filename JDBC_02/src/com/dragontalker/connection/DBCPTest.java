@@ -1,10 +1,16 @@
 package com.dragontalker.connection;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.junit.Test;
 
+import javax.sql.DataSource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBCPTest {
 
@@ -33,7 +39,17 @@ public class DBCPTest {
 
     //方式二: 使用配置文件
     @Test
-    public void testGetConnection1() {
+    public void testGetConnection1() throws Exception{
+        Properties props = new Properties();
+        //方式1:
+        //InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("dbcp.properties");
 
+        //方式2:
+        FileInputStream is = new FileInputStream(new File("src\\dbcp.properties"));
+
+        props.load(is);
+        DataSource source = BasicDataSourceFactory.createDataSource(props);
+        Connection conn = source.getConnection();
+        System.out.println(conn);
     }
 }
