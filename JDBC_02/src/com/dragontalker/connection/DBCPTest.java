@@ -11,6 +11,7 @@ public class DBCPTest {
     /**
      * @Description 测试DBCP的数据库连接池技术
      */
+    //方式一: 不推荐
     @Test
     public void testGetConnection() throws SQLException {
         //创建了DBCP的数据库连接池
@@ -27,5 +28,12 @@ public class DBCPTest {
         source.setMaxActive(100);
 
         Connection conn = source.getConnection();
+        System.out.println(conn);
+    }
+
+    //方式二: 使用配置文件
+    @Test
+    public void testGetConnection1() {
+
     }
 }
