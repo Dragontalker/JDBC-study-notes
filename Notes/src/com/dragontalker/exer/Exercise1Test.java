@@ -20,14 +20,14 @@ public class Exercise1Test {
         String email = scanner.next();
 
         System.out.print("请输入生日");
-        String birthday = scanner.next();
+        String birthday = scanner.next(); //1992-09-08
 
         String sql = "insert into customers(name, email, birth) values (?, ?, ?)";
         update(sql, name, email, birthday);
     }
 
     //通用的增删改操作
-    public void update(String sql, Object ... args) {
+    public int update(String sql, Object ... args) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -36,10 +36,18 @@ public class Exercise1Test {
             for (int i = 0; i < args.length; i++) {
                 ps.setObject(i + 1, args[i]);
             }
+            /*
+            ps.execute():
+            - 如果执行的查询操作, 有返回结果, 则此方法返回true;
+            - 如果执行的是增、删、改、操作, 没有返回结果, 则此方法返回false;
+             */
+            //return ps.execute();
+            return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn, ps);
         }
+        return 0;
     }
 }
