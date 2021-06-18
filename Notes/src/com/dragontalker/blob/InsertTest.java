@@ -1,5 +1,7 @@
 package com.dragontalker.blob;
 
+import org.junit.Test;
+
 /**
  * @Description 使用PreparedStatement实现批量数据的操作
  *
@@ -24,4 +26,10 @@ package com.dragontalker.blob;
  */
 
 public class InsertTest {
+
+    //批量插入的方式二
+    @Test
+    public void testInsertMany() {
+
+    }
 }
