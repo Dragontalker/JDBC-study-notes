@@ -23,7 +23,12 @@ public class Exercise1Test {
         String birthday = scanner.next(); //1992-09-08
 
         String sql = "insert into customers(name, email, birth) values (?, ?, ?)";
-        update(sql, name, email, birthday);
+        int insertCount = update(sql, name, email, birthday);
+        if(insertCount > 0) {
+            System.out.println("添加成功");
+        } else {
+            System.out.println("添加失败");
+        }
     }
 
     //通用的增删改操作
