@@ -21,6 +21,9 @@ public class Exercise1Test {
 
         System.out.print("请输入生日");
         String birthday = scanner.next();
+
+        String sql = "insert into customers(name, email, birth) values (?, ?, ?)";
+        update(sql, name, email, birthday);
     }
 
     //通用的增删改操作
