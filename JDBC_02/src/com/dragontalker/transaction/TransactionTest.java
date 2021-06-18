@@ -29,6 +29,7 @@ import java.sql.PreparedStatement;
  */
 public class TransactionTest {
 
+    //****************************未考虑数据库事务的转账操作****************************
     /*
     针对于数据表user_table来说:
     - AA用户给BB用户转账100
@@ -64,6 +65,25 @@ public class TransactionTest {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(conn, ps);
+        }
+        return 0;
+    }
+
+    //****************************考虑数据库事务的转账操作****************************
+    //通用的增删改操作 --- version 2.0
+    public int update(Connection conn, String sql, Object ... args) {
+        PreparedStatement ps = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps);
         }
         return 0;
     }
