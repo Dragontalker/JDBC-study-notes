@@ -1,7 +1,7 @@
 package com.dragontalker.daoplus.junit;
 
 import com.dragontalker.bean.Customer;
-import com.dragontalker.dao.CustomerDAOImpl;
+import com.dragontalker.daoplus.CustomerDAOImpl;
 import com.dragontalker.utils.JDBCUtils;
 import org.junit.Test;
 
