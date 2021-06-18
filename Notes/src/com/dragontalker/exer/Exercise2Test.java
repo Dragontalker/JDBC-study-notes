@@ -25,6 +25,9 @@ public class Exercise2Test {
 
         System.out.println("学生姓名:");
         String studentName = scanner.next();
+
+        System.out.println("所在城市:");
+        String location = scanner.next();
     }
 
     //通用的增删改操作
