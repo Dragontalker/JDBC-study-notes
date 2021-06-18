@@ -1,5 +1,6 @@
 package com.dragontalker.blob;
 
+import com.dragontalker.bean.Customer;
 import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
 
@@ -52,7 +53,13 @@ public class BlobTest {
 //            String email = rs.getString(3);
 //            Date birth = rs.getDate(4);
 
+            //方式二:
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            Date birth = rs.getDate("birth");
 
+            Customer cust = new Customer(id, name, email, birth);
         }
     }
 }
