@@ -13,7 +13,13 @@ public class DBCPTest {
      */
     public void testGetConnection() throws SQLException {
         //创建了DBCP的数据库连接池
-        DataSource source = new BasicDataSource();
+        BasicDataSource source = new BasicDataSource();
+
+        //设置基本信息
+        source.setDriverClassName("com.mysql.jdbc.Driver");
+        source.setUrl("jdbc:mysql:///test");
+        source.setUsername("root");
+        source.setPassword("password");
 
         Connection conn = source.getConnection();
     }
