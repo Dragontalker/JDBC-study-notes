@@ -56,4 +56,18 @@ public class CustomerDAOImplTest {
             JDBCUtils.closeResource(conn, null);
         }
     }
+
+    @Test
+    public void testGetCustomerById() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            Customer cust = dao.getCustomerById(conn, 19);
+            System.out.println(cust);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
 }
