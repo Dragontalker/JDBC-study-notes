@@ -61,7 +61,9 @@ public class InsertTest {
 
     /*
     批量插入的方式三:
-    1. addBatch(),
+    1. addBatch(),executeBatch(), clearBatch()
+    2. mysql服务器默认是关闭批处理的, 我们需要通过一个参数, 让mysql开启批处理的支持
+        ?rewriteBatchedStatements=true写在配置文件的url后面
      */
     @Test
     public void testInsertMany1() {
