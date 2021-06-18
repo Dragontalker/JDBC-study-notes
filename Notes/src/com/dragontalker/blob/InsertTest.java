@@ -58,4 +58,46 @@ public class InsertTest {
             JDBCUtils.closeResource(conn, ps);
         }
     }
+
+    /*
+    批量插入的方式三:
+    1. addBatch(),
+     */
+    @Test
+    public void testInsertMany1() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+
+            long start = System.currentTimeMillis();
+
+            conn = JDBCUtils.getConnection();
+            String sql = "insert into goods(name) values(?)";
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i <= 2000; i++) {
+                ps.setObject(1, "name_" + i);
+
+                //1. "攒"sql"
+                ps.addBatch();
+
+                if (i % 500 == 0) {
+                    //2. 指定batch
+                    ps.execute();
+
+                    //3. 清空batch
+                    ps.clearBatch();
+                }
+
+            }
+
+            long end = System.currentTimeMillis();
+
+            System.out.println("花费的时间为: " + (end - start) + "ms");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, ps);
+        }
+    }
 }
