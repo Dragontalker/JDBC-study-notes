@@ -7,6 +7,7 @@ package com.dragontalker.dao;
 import com.dragontalker.bean.Customer;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 public interface CustomerDAO {
@@ -51,4 +52,11 @@ public interface CustomerDAO {
      * @return
      */
     Long getCount(Connection conn);
+
+    /**
+     * @Description 返回数据表中最大的生日
+     * @param conn
+     * @return
+     */
+    Date getMaxBirth(Connection conn);
 }
