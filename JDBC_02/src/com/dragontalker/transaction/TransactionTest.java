@@ -24,6 +24,7 @@ import java.sql.PreparedStatement;
         > set autocommit = false对DDL无效
     > DML操作默认情况下, 一旦执行, 就会自动提交
         > 我们可以通过set autocommit = false的方式取消DML操作的自动提交
+    > 默认在关闭连接时, 会自动的提交数据
 
  */
 public class TransactionTest {
