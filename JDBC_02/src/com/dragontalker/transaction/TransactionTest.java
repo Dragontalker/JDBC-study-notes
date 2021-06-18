@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /*
 1. 什么叫数据库事务?
@@ -163,12 +161,12 @@ public class TransactionTest {
         Connection conn = JDBCUtils.getConnection();
 
         //取消自动提交数据
-        //conn.setAutoCommit(false);
+        conn.setAutoCommit(false);
 
         String sql = "update user_table set balance = ? where user = ?";
-        User user = getInstance(conn, User.class, sql, 5000, "CC");
+        update(conn, sql, 5000, "CC");
 
-        //Thread.sleep(15000);
+        Thread.sleep(15000);
         System.out.println("修改成功");
     }
 
