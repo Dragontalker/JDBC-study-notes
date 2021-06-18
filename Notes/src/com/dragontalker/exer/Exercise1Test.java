@@ -10,20 +10,20 @@ import java.util.Scanner;
 //课后练习1
 public class Exercise1Test {
 
-    @Test
-    public void testInsert() {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("请输入用户名");
-        String name = scanner.next();
+        System.out.println("请输入用户名");
+        String name = scanner.nextLine();
 
-        System.out.print("请输入邮箱");
-        String email = scanner.next();
+        System.out.println("请输入邮箱");
+        String email = scanner.nextLine();
 
-        System.out.print("请输入生日");
-        String birthday = scanner.next(); //1992-09-08
+        System.out.println("请输入生日");
+        String birthday = scanner.nextLine(); //1992-09-08
 
         String sql = "insert into customers(name, email, birth) values (?, ?, ?)";
-        int insertCount = update(sql, name, email, birthday);
+        Exercise1Test ex1 = new Exercise1Test();
+        int insertCount = ex1.update(sql, name, email, birthday);
         if(insertCount > 0) {
             System.out.println("添加成功");
         } else {
