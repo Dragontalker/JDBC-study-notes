@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.util.List;
 
-public class CustomerDAOImpl extends BaseDAO implements CustomerDAO {
+public class CustomerDAOImpl extends BaseDAO<Customer> implements CustomerDAO {
     @Override
     public void insert(Connection conn, Customer cust) {
         String sql = "insert into customers(name, email, birth) values(?, ?, ?)";

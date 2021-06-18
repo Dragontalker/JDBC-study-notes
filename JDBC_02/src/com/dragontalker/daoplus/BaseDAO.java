@@ -3,6 +3,8 @@ package com.dragontalker.daoplus;
 import com.dragontalker.utils.JDBCUtils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,16 @@ import java.util.List;
 DAO: data(base) access object
 封装了对于数据表的通用的操作
  */
-public abstract class BaseDAO {
+public abstract class BaseDAO<T> {
+
+    private Class<T> clazz = null;
+
+    {
+        Type genericSuperclass = this.getClass().getGenericSuperclass();
+        ParameterizedType paramType = (ParameterizedType) genericSuperclass;
+        Type[] typeArguments = paramType.getActualTypeArguments();//获取了父类的泛型参数
+        clazz = (Class<T>) typeArguments[0];//泛型的第一个参数
+    }
 
     public int update(Connection conn, String sql, Object ... args) {
         PreparedStatement ps = null;
@@ -29,7 +40,7 @@ public abstract class BaseDAO {
         return 0;
     }
 
-    public <T> T getInstance(Connection conn, Class<T> clazz, String sql, Object ... args) {
+    public T getInstance(Connection conn, String sql, Object ... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -69,7 +80,7 @@ public abstract class BaseDAO {
         return null;
     }
 
-    public <T> List<T> getForList(Connection conn, Class<T> clazz, String sql, Object ... args) {
+    public List<T> getForList(Connection conn, String sql, Object ... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
