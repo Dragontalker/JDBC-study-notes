@@ -26,8 +26,8 @@ public class PreparedStatementTest {
         System.out.println("请输入密码: ");
         String password = scanner.nextLine();
 
-        String sql = "SELECT user, password FROM user_table WHERE user = '1' or ' AND password = '=1 or '1'";
-        User returnUser = getInstance(User.class, sql);
+        String sql = "SELECT user, password FROM user_table WHERE user = ? AND password = ?";
+        User returnUser = getInstance(User.class, sql, user, password);
         if(returnUser != null) {
             System.out.println("登陆成功");
         } else {
