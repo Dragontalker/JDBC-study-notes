@@ -5,6 +5,7 @@ import com.dragontalker.dao.CustomerDAOImpl;
 import com.dragontalker.utils.JDBCUtils;
 import org.junit.Test;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -34,6 +35,21 @@ public class CustomerDAOImplTest {
             conn = JDBCUtils.getConnection();
             dao.deleteById(conn, 13);
             System.out.println("删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, null);
+        }
+    }
+
+    @Test
+    public void testUpdateById() {
+        Connection conn = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            Customer cust = new Customer(18, "Mozart", "mozhate@126.com", new Date(43534646435L));
+            dao.updateById(conn, cust);
+            System.out.println("修改成功");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
