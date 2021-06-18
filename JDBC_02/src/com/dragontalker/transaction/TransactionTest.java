@@ -155,6 +155,12 @@ public class TransactionTest {
     @Test
     public void testTransactionUpdate() throws Exception{
         Connection conn = JDBCUtils.getConnection();
+
+        String sql = "update user_table set balance = ? where user = ?";
+        User user = getInstance(conn, User.class, sql, 5000, "CC");
+
+        Thread.sleep(15000);
+        System.out.println("修改成功");
     }
 
     //通用的查询操作, 用于返回数据表中的一条记录
