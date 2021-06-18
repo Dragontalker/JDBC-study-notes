@@ -11,7 +11,12 @@ public class TransactionTest {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-
+            conn = JDBCUtils.getConnection();
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
