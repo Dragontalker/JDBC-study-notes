@@ -1,6 +1,10 @@
 package com.dragontalker.blob;
 
+import com.dragontalker.util.JDBCUtils;
 import org.junit.Test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  * @Description 使用PreparedStatement实现批量数据的操作
@@ -30,6 +34,20 @@ public class InsertTest {
     //批量插入的方式二
     @Test
     public void testInsertMany() {
-
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = JDBCUtils.getConnection();
+            String sql = "insert into goods(name) values(?)";
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i <= 20000; i++) {
+                ps.setObject(1, "name_" + i);
+                ps.execute();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(conn, ps);
+        }
     }
 }
