@@ -17,6 +17,14 @@ import java.sql.PreparedStatement;
         - 要么所有的事务都被提交(commit), 那么这些修改就被永久保存下来
         - 要么数据库管理系统将放弃所作的所有修改, 整个事务回滚(rollback)到最初状态
 
+3. 数据一旦提交, 就不可回滚
+
+4. 哪些操作会导致数据的自动提交?
+    > DDL操作一旦执行, 都会自动提交
+        > set autocommit = false对DDL无效
+    > DML操作默认情况下, 一旦执行, 就会自动提交
+        > 我们可以通过set autocommit = false的方式取消DML操作的自动提交
+
  */
 public class TransactionTest {
 
