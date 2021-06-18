@@ -52,13 +52,6 @@ public class BlobTest {
 
             rs = ps.executeQuery();
             if (rs.next()) {
-                //方式一:
-    //            int id = rs.getInt(1);
-    //            String name = rs.getString(2);
-    //            String email = rs.getString(3);
-    //            Date birth = rs.getDate(4);
-
-                //方式二:
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
