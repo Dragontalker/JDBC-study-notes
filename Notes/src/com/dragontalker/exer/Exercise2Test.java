@@ -31,6 +31,14 @@ public class Exercise2Test {
 
         System.out.println("考试成绩:");
         String grade = scanner.next();
+
+        String sql = "insert into `examstudent` (type, IDCard, examCard, studentName, location, grade) values (?, ?, ?, ?, ?, ?)";
+        int insertCount = update(sql, type, IDCard, examCard, studentName, location, grade);
+        if (insertCount > 0) {
+            System.out.println("添加成功");
+        } else {
+            System.out.println("添加失败");
+        }
     }
 
     //通用的增删改操作
