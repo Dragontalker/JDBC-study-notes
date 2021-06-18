@@ -37,13 +37,21 @@ public class InsertTest {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
+
+            long start = System.currentTimeMillis();
+
             conn = JDBCUtils.getConnection();
             String sql = "insert into goods(name) values(?)";
             ps = conn.prepareStatement(sql);
-            for (int i = 0; i <= 20000; i++) {
+            for (int i = 0; i <= 2000; i++) {
                 ps.setObject(1, "name_" + i);
                 ps.execute();
             }
+
+            long end = System.currentTimeMillis();
+
+            System.out.println("花费的时间为: " + (end - start) + "ms");
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
