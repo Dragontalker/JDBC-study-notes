@@ -141,7 +141,13 @@ public class TransactionTest {
 
     //****************************************************************
 
+    @Test
+    public void testTransactionSelect() {
+
+    }
+
     //通用的查询操作, 用于返回数据表中的一条记录
+    //version 2.0 考虑上事务
     public <T> List<T> getForList(Connection conn, Class<T> clazz, String sql, Object ... args) {
         PreparedStatement ps = null;
         ResultSet rs = null;
