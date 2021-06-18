@@ -37,7 +37,7 @@ public interface CustomerDAO {
      * @param conn
      * @param id
      */
-    void getCustomerById(Connection conn, int id);
+    Customer getCustomerById(Connection conn, int id);
 
     /**
      * @Description 查询表中的所有记录构成的集合
